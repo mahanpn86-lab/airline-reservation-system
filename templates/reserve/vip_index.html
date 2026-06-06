@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/flights_single.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>انتخاب هواپیما برای رزرو | پروژه دانشجویی ماهان پناهی</title>
+</head>
+<body>
+    {% include "././navbar.html" %}
+
+    <div class="container">
+        <div class="row">
+            <form action="{{ url_for('reserve_main', seat_class='vip') }}" method="post" class="search-form">
+                <input type="text" name="origin" placeholder="مبدا">
+                <input type="text" name="destination" placeholder="مقصد">
+                <button type="submit">جستجو</button>
+            </form>
+        </div>
+    </div>
+
+    
+
+    <div class="container">
+        <div class="row mt-4 my-header-text">
+            {% if origin == None or destination == None or origin == "" or destination == "" %}
+                <h2>برای مشاهده سفر های فعال و رزرو بلیط ابتدا مبدا و مقصدی را جستجو کنید</h2>
+            {% else %}
+                <h2>تمام سفر های با مبدا {{ origin }} و مقصد {{ destination }}</h2>
+            {% endif %}
+            <hr class="text-light">
+            {% for flight in flights %}
+                {% set image_number = range(1, 7) | random %}
+                {% set star_number = range(3, 6) | random %}
+                <div class="col-4">
+                    <div class="card" style="width: 22rem;">
+                        <div class="card-img-container">
+                            <img src="{{ url_for('static', filename='img/airplane-' ~ image_number ~ '.png') }}" class="card-img-top" alt="...">
+                            <h5 class="card-title">{{ flight.airplane_name }} - 
+                                {% for star in range(star_number) %}
+                                    <i class="fas fa-star"></i>
+                                {% endfor %}
+                                {% if star_number < 5 %}
+                                    {% set s = 5 - star_number %}
+                                    {% for i in range(s) %}
+                                        <i class="far fa-star"></i>
+                                    {% endfor %}
+                                {% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="fal fa-check-circle"></i> از مبدا {{ flight.origin }} به مقصد {{ flight.destination }}</p>
+                            <p class="card-text"><i class="fal fa-check-circle"></i> تاریخ پرواز {{ flight.departure_date }} در ساعت {{ flight.departure_time.strftime('%H:%M') }}</p>
+                            <p class="card-text"><i class="fal fa-check-circle"></i> تاریخ رسیدن {{ flight.arrival_date }} در ساعت {{ flight.arrival_time.strftime('%H:%M') }}</p>
+                            <p class="card-text"><i class="fal fa-check-circle"></i> قیمت بلیط ویژه: {{ flight.vip_price }} تومان</p>
+                            <p class="card-text"><i class="fal fa-check-circle"></i>  تعداد صندلی خالی در سالن ویژه: {{ flight.airplane.capacity_vip - flight.vip_passengers }}</p>
+                            <hr>
+                            <a href="{{ url_for('choice_seat', flight_id=flight.id, seat_class=seat_class) }}" class="button">انتخاب صندلی و رزرو</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+
+</body>
+</html>

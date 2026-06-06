@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>پنل ادمین | لیست هواپیما ها</title>
+</head>
+<body>
+
+    {% include "././navbar.html" %}
+
+    <div class="container">
+        <div class="row mt-4">
+            {% include "./admin/menu.html" %}
+            <div class="col-12 justify-content-center mt-4">
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>نام هواپیما</th>
+                            <th>ظرفیت Economy</th>
+                            <th>ظرفیت Business</th>
+                            <th>ظرفیت Vip</th>
+                            <th>تاریخ شروع به کار</th>
+                            <th>سایر</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-light">
+                        {% for airplane in airplanes %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ airplane.name }}</td>
+                                <td>{{ airplane.capacity_economy }}</td>
+                                <td>{{ airplane.capacity_business }}</td>
+                                <td>{{ airplane.capacity_vip }}</td>
+                                <td>{{ airplane.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <form action="{{ url_for('edit_airplane', id=airplane.id) }}" method="get">
+                                            <button type="button" class="btn btn-info btn-sm"><a href="{{ url_for('edit_airplane', id=airplane.id) }}" class="text-light">Edit</a></button>
+                                        </form>
+                                        <form action="{{ url_for('get_all_airplanes', id=airplane.id) }}" method="post">
+                                            <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+
+</body>
+<script src="../../../static/js/bootstrap.bundle.min.js"></script>
+</html>

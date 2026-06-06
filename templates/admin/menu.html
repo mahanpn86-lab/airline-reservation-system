@@ -1,0 +1,17 @@
+<div class="col-4">
+    <div class="card">
+        <div class="card-header text-center">پنل ادمین | Admin Dashboard</div>
+        <div class="card-body text-center justify-content-center">
+            <ul class="list-group">
+                <li class="list-group-item bg-primary"><a href="{{ url_for('add_airplane') }}" class="text-light">افزودن هواپیما</a></li>
+                <li class="list-group-item bg-primary"><a href="{{ url_for('get_all_airplanes') }}" class="text-light">لیست هواپیما ها</a></li>
+                <li class="list-group-item bg-info"><a href="{{ url_for('add_flight') }}" class="text-light">افزودن پرواز</a></li>
+                <li class="list-group-item bg-info"><a href="{{ url_for('get_all_flights') }}" class="text-light">لیست پرواز ها</a></li>
+                <li class="list-group-item bg-warning"><a href="{{ url_for('get_all_users') }}" class="text-light">لیست کاربران</a></li>
+                <li class="list-group-item bg-warning"><a href="{{ url_for('sales_profit') }}" class="text-light">گزارش سود حاصل از فروش بلیط ها</a></li>
+                <li class="list-group-item bg-secondary"><a href="{{ url_for('reservation_list') }}" class="text-light">وضعیت سالن های هواپیما</a></li>
+                <li class="list-group-item bg-warning main-button"><a href="{{ url_for('main') }}" class="text-light">صفحه اصلی</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<footer>
+    <section class="row-1">
+        <section class="site-info">
+            <div id="contant-us">
+                <h4>اطلاعات تماس</h4>
+                <p><i class="fad fa-phone"></i> 09302446841</p>
+            </div>
+            <div>
+                <h4>دسترسی های ادمین</h4>
+                <p><i class="fad fa-users"></i>  مدیریت کاربران</p>
+                <p><i class="fad fa-plane"></i>  مدیریت هواپیما ها</p>
+                <p><i class="fad fa-route"></i>  مدیریت پرواز ها</p>
+                <p><i class="fad fa-chart-bar"></i>  گزارشات درآمد</p>
+                <p><i class="fad fa-user-shield"></i>  پنل مدیریت</p>
+            </div>
+            <div>
+                <h4>خدمات سایت</h4>
+                <p><i class="fad fa-ticket"></i>  رزرو بلیط</p>
+                <p><i class="fad fa-plane-departure"></i>  مدیریت پرواز ها</p>
+                <p><i class="fad fa-tv"></i>  وضعیت سالن </p>
+                <p><i class="fad fa-sack-dollar"></i>  گزارشات درآمد</p>
+                <p><i class="fad fa-headset"></i>  پشتیبانی 24/7</p>
+            </div>
+            <div>
+                <h4>دسترسی سریع</h4>
+                <a href="{{ url_for('main') }}#flights-search"><p><i class="fad fa-plane"></i>  لیست سالن ها</p></a>
+                <a href="{{ url_for('main') }}#flights-search"><p><i class="fad fa-clock"></i>  مشاهده پرواز ها</p></a>
+                <a href="{{ url_for('wallet_increase') }}"><p><i class="fad fa-wallet"></i>  افزایش موجودی</p></a>
+                <a href="{{ url_for('account') }}"><p><i class="fad fa-user"></i>  پروفایل کاربری</p></a>
+                <a href="{{ url_for('main') }}#about-us"><p><i class="fad fa-question"></i>  درباره ما</p></a>
+            </div>
+        </section>
+
+        <section class="site-title">
+            <img src="{{ url_for('static', filename='img/airplane-icon.svg') }}" alt="" class="site-logo">
+            <p>سفر به آینده با خدمات هوشمند رزرو و مدیریت پرواز ها.</p>
+            <p>تجربه ای متفاوت از خرید بلیط و سفر هوایی</p>
+            <p class="phone-number">09302446841</p>
+        </section>
+    </section>
+
+    <hr class="text-light">
+
+    <section class="row-2" id="about-site">
+        <div class="column">
+            <div class="icon"><i class="fa fa-regular fa-user"></i></div>
+            <div class="content">
+                <h5>سازنده</h5>
+                <p>ماهان پناهی</p>
+                <p>دانشجوی کارشناسی مهندسی کامپیوتر</p>
+                <p>استاد: جناب آقای سید حسین میرزاده</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="icon"><i class="fa fa-code"></i></div>
+            <div class="content">
+                <h5>اطلاعات پروژه</h5>
+                <p>نام پروژه: سیستم رزرو آنلاین پرواز</p>
+                <p>زبان برنامه نویسی سمت سرور: Python (Flask)</p>
+                <p>زبان برنامه نویسی سمت کاربر: HTML - CSS</p>
+                <p>فریم ورک: BootStrap</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="icon"><i class="fa fa-graduation-cap"></i></div>
+            <div class="content">
+                <h5>دانشگاه</h5>
+                <p>دانشگاه تخصصی فناوری های نوین آمل</p>
+                <img src="{{ url_for('static', filename='img/AUSMT-logo.png') }}" alt="" class="AUSMT-logo">
+            </div>
+        </div>
+    </section>
+    
+    <section class="row-3">
+        <p><i class="fa fa-copyright"></i> تمامی حقوق محفوظ است - سیستم رزرو آنلاین</p>
+    </section>
+</footer>

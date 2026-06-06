@@ -1,0 +1,210 @@
+@import url(all.min.css);
+@font-face {
+    font-family: Vazirmatn; /*persian texts*/
+    src: url(../fonts/Vazirmatn-FD-Medium.ttf);
+}
+@font-face {
+    font-family: Estedad; /*persian titles*/
+    src: url(../fonts/Estedad-Medium.ttf);
+}
+@font-face {
+    font-family: Inter; /*English texts*/
+    src: url(../fonts/Inter_18pt-Medium.ttf);
+}
+@font-face {
+    font-family: Poppins; /*English titles*/
+    src: url(../fonts/PoppinsLatin-Medium.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background) !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+ul{
+    list-style: none;
+}
+
+.rtl{
+    direction: rtl;
+}
+
+:root{
+    --background: #0B1021;
+    --surface: #121833;
+    --primary: #1E3A8A;
+    --red-primary: #7F1D1D;
+    --red-secondary: #F87171;
+    --green-primary: #065F46;
+    --green-secondary: #10B981;
+    --yellow-primary: #B45309;
+    --yellow-secondary: #FBBF24;
+    --secondary: #7C3ACD;
+    --thirdly: #38BDF8;
+    --text: #FFFFFF;
+    --text-muted: #e7e7e8;
+    --success: #22C55E;
+    --warning: #F59E0B;
+}
+
+
+/* -----NAV----- */
+nav{
+    background-color: var(--background);
+    border-bottom: 1px solid var(--surface);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 8px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;;
+}
+nav .airplane-icon{
+    width: 60px;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl;
+    margin: 0 !important;
+}
+nav ul li{
+    color: var(--text-muted);
+    font-family: Vazirmatn !important;
+    margin: 0 20px;
+    font-weight: lighter;
+    font-size: 12px;
+}
+nav ul li.active{
+    color: var(--thirdly);
+}
+.button{
+    background-image: linear-gradient(75deg, var(--secondary), var(--primary));
+    border-radius: 10px;
+    color: var(--text-muted) !important;
+    font-family: Estedad !important;
+    height: 40px;
+    align-self: center;
+    padding: 8px 12px 5px 12px;
+    font-size: 12px;
+    transition: all 0.25s ease-in;
+}
+.button:hover{
+    background-image: linear-gradient(255deg, var(--secondary), var(--primary));
+    box-shadow: 0 0 15px var(--primary);
+    transform: scale(0.98);
+}
+.exit-button{
+    background-image: linear-gradient(75deg, var(--red-secondary), var(--red-primary)) !important;
+    border-radius: 10px ;
+    color: var(--text-muted) !important;
+    font-family: Estedad ;
+    height: 40px ;
+    align-self: center ;
+    padding: 8px 12px 5px 12px ;
+    font-size: 12px ;
+    transition: all 0.25s ease-in ;
+    margin-left: 10px;
+}
+nav a.exit-button:hover{
+    background-image: linear-gradient(225deg, var(--red-secondary), var(--red-primary)) !important;
+    box-shadow: 0 0 15px var(--red-primary);
+    transform: scale(0.98);
+}
+
+/* -------------------------- */
+.airplane-top{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.seats{
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+    position: absolute;
+    top: 260px;
+    left: 650;
+}
+.seat{
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+    margin: 7px 3px;
+}
+.free{
+    background-color: var(--green-secondary);
+    border: none;
+    outline: none;
+}
+.booked{
+    background-color: var(--yellow-primary) !important;
+}
+.free:hover{
+    cursor: pointer;
+}
+.booked:hover{
+   cursor: not-allowed;
+}
+.help{
+    padding: 3px 0;
+    border-radius: 5px;
+    width: 150px;
+    margin: 15px auto;
+    font-family: Vazirmatn;
+    font-size: 13px;
+}
+
+
+.search-form{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: start;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 30px;
+    margin: 25px;
+}
+.search-form input{
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 5px;
+    text-align: center;
+    background-image: linear-gradient(105deg, var(--background), var(--surface));
+    color: var(--green-secondary);
+    font-family: Vazirmatn;
+    border: 1px solid var(--thirdly);
+    border-radius: 25px;
+}
+.search-form input::placeholder{
+    color: var(--text);
+}
+.search-form button{
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 5px;
+    text-align: center;
+    background-image: linear-gradient(125deg, var(--primary), var(--secondary));
+    color: var(--text);
+    font-family: Vazirmatn;
+    border: 1px solid var(--thirdly);
+    border-radius: 25px;
+}

@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/account.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>اطلاعات پروفایل کاربری | پروژه دانشجویی ماهان پناهی</title>
+</head>
+<body>
+    {% include "./navbar.html" %}
+    
+    <div class="container">
+        <div class="mt-5">
+            <div class="bg-surface border rounded p-3">
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control text-end info-bg-color" placeholder="{{ current_user.full_name }}" aria-label="نام و نام خانوادگی" aria-describedby="basic-addon1" readonly>
+                    <span class="input-group-text info-bg-primary" id="basic-addon1">نام و نام خانوادگی</span>
+                </div>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control text-end info-bg-color" placeholder="{{ current_user.national_code }}" aria-label="کد ملی" aria-describedby="basic-addon1" readonly>
+                    <span class="input-group-text info-bg-primary" id="basic-addon1">کد ملی</span>
+                </div>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control text-end info-bg-color" placeholder="{{ current_user.phone }}" aria-label="شماره تلفن" aria-describedby="basic-addon1" readonly>
+                    <span class="input-group-text info-bg-primary" id="basic-addon1">شماره تلفن</span>
+
+                </div>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control text-end info-bg-color" placeholder="{{ current_user.wallet }}" aria-label="موجودی کیف پول" aria-describedby="basic-addon1" readonly>
+                    <span class="input-group-text info-bg-primary" id="basic-addon1">موجودی کیف پول</span>
+                </div>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control text-end info-bg-color" placeholder="{{ current_user.created_at.strftime('%Y-%m-%d %H:%M') }}" aria-label="موجودی کیف پول" aria-describedby="basic-addon1" readonly>
+                    <span class="input-group-text info-bg-primary" id="basic-addon1">تاریخ ایجاد حساب کاربری</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% include "./footer.html" %}
+
+</body>
+</html>

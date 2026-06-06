@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/sales_report.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>پنل ادمین | گزارشات فروش بلیط ها</title>
+</head>
+<body>
+
+    {% include "./navbar.html" %}
+
+    <div class="container">
+        <div class="row mt-4">
+            {% include "admin/menu.html" %}
+            <div class="col-8 justify-content-center mt-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>نام هواپیما</th>
+                            <th>آیدی هواپیما</th>
+                            <th>فروش سالن عمومی</th>
+                            <th>فروش سالن بیزینس</th>
+                            <th>فروش سالن وی آی پی</th>
+                            <th>پرفروش ترین سالن</th>
+                            <th>فروش کل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for flight in flights %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ flight.airplane_name }}</td>
+                                <td>{{ flight.airplane_id }}</td>
+                                <td>{{ profits["economy_profits"][flight.id - 1] }}</td>
+                                <td>{{ profits["business_profits"][flight.id - 1] }}</td>
+                                <td>{{ profits["vip_profits"][flight.id - 1] }}</td>
+                                <td>{{ [profits["economy_profits"][flight.id - 1], profits["business_profits"][flight.id - 1], profits["vip_profits"][flight.id - 1]] | max }}</td>
+                                <td>{{ [profits["economy_profits"][flight.id - 1] + profits["business_profits"][flight.id - 1] + profits["vip_profits"][flight.id - 1]] }}</td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+
+</body>
+<script src="../../../static/js/bootstrap.bundle.min.js"></script>
+</html>

@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ticket.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>انتخاب صندلی برای رزرو | پروژه دانشجویی ماهان پناهی</title>
+</head>
+<body>
+
+    {% include "././navbar.html" %}
+
+    <div class="container w-50 mt-5 text-center">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+    <div class="card container">
+        <h5 class="card-title">بلیط هواپیما</h5>
+        <div class="card-body">
+            <p class="card-text">نام و نام خانوادگی: {{current_user.full_name}} - کد ملی {{current_user.national_code}} - شماره موبایل: {{ ticket.phone }}</p>
+            <p class="card-text">نام هواپیما: {{ ticket.airplane_name }} - شناسه پرواز: {{ ticket.flight_id }}</p>
+            <p class="card-text">شماره صندلی: {{ ticket.seat_id }} - مدل سالن: {{ ticket.seat_type }}</p>
+            <p class="card-text">شناسه بلیط: {{ ticket.id }}</p>
+            <p class="card-text">تاریخ صدور بلیط: {{ ticket.created_at.strftime("%d-%m-%Y - %H:%M:%S") }}</p>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+
+</body>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</html>

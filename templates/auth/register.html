@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>پروژه دانشجویی ماهان پناهی | صفحه ثبت نام</title>
+</head>
+<body>
+    
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-4">
+            <h1 class="text-center text-primary">فرم ثبت نام</h1>
+            <hr>
+            <form action="{{ url_for('register') }}" method="POST" novalidate>
+
+                {% for field, error in form.errors.items() %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ " , ".join(error) }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endwith %}
+
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    <div class="form-group">
+                        {{ form.full_name(class="form-control", placeholder="نام و نام خانوادگی") }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-group">
+                        {{ form.national_code(class="form-control", placeholder="کد ملی") }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-group">
+                        {{ form.phone(class="form-control", placeholder="شماره تلفن") }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-info w-100") }}
+                    </div>
+                </div>
+            </form>
+            <a href="{{ url_for('signin') }}" class="text-center">قبلا ثبت نام کرده اید؟ ورود به حساب کاربری</a>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+</body>
+<script src="../../static/js/bootstrap.bundle.min.js"></script>
+</html>

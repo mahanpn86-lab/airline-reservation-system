@@ -1,0 +1,231 @@
+@import url(all.min.css);
+@font-face {
+    font-family: Vazirmatn; /*persian texts*/
+    src: url(../fonts/Vazirmatn-FD-Medium.ttf);
+}
+@font-face {
+    font-family: Estedad; /*persian titles*/
+    src: url(../fonts/Estedad-Medium.ttf);
+}
+@font-face {
+    font-family: Inter; /*English texts*/
+    src: url(../fonts/Inter_18pt-Medium.ttf);
+}
+@font-face {
+    font-family: Poppins; /*English titles*/
+    src: url(../fonts/PoppinsLatin-Medium.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background) !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+ul{
+    list-style: none;
+}
+
+.rtl{
+    direction: rtl;
+}
+
+:root{
+    --background: #0B1021;
+    --surface: #121833;
+    --primary: #1E3A8A;
+    --red-primary: #7F1D1D;
+    --red-secondary: #F87171;
+    --green-primary: #065F46;
+    --green-secondary: #10B981;
+    --yellow-primary: #B45309;
+    --yellow-secondary: #FBBF24;
+    --secondary: #7C3ACD;
+    --thirdly: #38BDF8;
+    --text: #FFFFFF;
+    --text-muted: #e7e7e8;
+    --success: #22C55E;
+    --warning: #F59E0B;
+}
+
+
+/* -----NAV----- */
+nav{
+    background-color: var(--background);
+    border-bottom: 1px solid var(--surface);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 8px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;;
+}
+nav .airplane-icon{
+    width: 60px;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl;
+    margin: 0 !important;
+}
+nav ul li{
+    color: var(--text-muted);
+    font-family: Vazirmatn !important;
+    margin: 0 20px;
+    font-weight: lighter;
+    font-size: 12px;
+}
+nav ul li.active{
+    color: var(--thirdly);
+}
+nav a.button{
+    background-image: linear-gradient(75deg, var(--secondary), var(--primary));
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-family: Estedad !important;
+    height: 40px;
+    align-self: center;
+    padding: 8px 12px 5px 12px;
+    font-size: 12px;
+    transition: all 0.25s ease-in;
+}
+nav a.button:hover{
+    background-image: linear-gradient(255deg, var(--secondary), var(--primary));
+    box-shadow: 0 0 15px var(--primary);
+    transform: scale(0.98);
+}
+.exit-button{
+    background-image: linear-gradient(75deg, var(--red-secondary), var(--red-primary)) !important;
+    border-radius: 10px ;
+    color: var(--text-muted) !important;
+    font-family: Estedad ;
+    height: 40px ;
+    align-self: center ;
+    padding: 8px 12px 5px 12px ;
+    font-size: 12px ;
+    transition: all 0.25s ease-in ;
+    margin-left: 10px;
+}
+nav a.exit-button:hover{
+    background-image: linear-gradient(225deg, var(--red-secondary), var(--red-primary)) !important;
+    box-shadow: 0 0 15px var(--red-primary);
+    transform: scale(0.98);
+}
+
+/* -------------------------- */
+.card{
+    background-color: var(--surface);
+    border: 1px solid var(--primary);
+    border-radius: 25px;
+}
+.card .card-header{
+    color: var(--text);
+    font-family: Estedad;
+    direction: rtl;
+    background-color: var(--primary);
+    border-radius: 20px 20px 0 0;
+}
+.card-body ul{
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-body ul li:not(.main-button){
+    background:linear-gradient(75deg, var(--secondary), var(--thirdly) 90%) !important;
+    margin: 15px 0;
+    padding: 12px 20px;
+    width: 90%;
+    outline: 3px solid var(--primary);
+    outline-offset: -2px;
+    border-radius: 15px !important;
+    font-family: Vazirmatn;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+.card-body ul li:hover{
+    transform: scale(0.95);
+    box-shadow: 0 0 12px var(--secondary);
+}
+.bg-surface{
+    background-color: var(--surface) !important;
+    border: 1px solid var(--primary) !important;
+    border-radius: 25px !important;
+    margin-bottom: 30px;
+}
+.info-bg-primary{
+    background-color: var(--primary) !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0 10px 10px 0 !important;
+    font-family: Vazirmatn;
+    color: var(--text-muted);
+}
+.info-bg-primary-left{
+    background-color: var(--primary) !important;
+    border: none !important;
+    outline: none !important;
+    border-radius:  10px 0 0 10px !important;
+    font-family: Vazirmatn;
+    color: var(--text-muted);
+}
+.form-control{
+    border: none !important;
+    outline: none !important;
+}
+.info-bg-color{
+    background-color: var(--background);
+    border-radius: 10px 0 0 10px !important;
+    font-family: Vazirmatn;
+}
+.info-bg-color-left{
+    background-color: var(--background);
+    border-radius: 0 10px 10px 0 !important;
+    font-family: Vazirmatn;
+}
+.green-button{
+    background: linear-gradient(135deg, var(--green-secondary), var(--green-primary));
+    font-family: Vazirmatn;
+    color: var(--text);
+    outline: 3px solid var(--green-primary);
+    outline-offset: -2px;
+    border-radius: 10px !important;
+}
+.warning-button{
+    background: linear-gradient(135deg, var(--yellow-secondary), var(--yellow-primary));
+    font-family: Vazirmatn;
+    color: var(--text);
+    outline: 3px solid var(--yellow-primary);
+    outline-offset: -2px;
+    border-radius: 10px !important;
+}
+.main-button{
+    background: linear-gradient(75deg, var(--red-primary), var(--red-secondary) 90%) !important;
+    margin: 15px 0;
+    padding: 12px 20px;
+    width: 90%;
+    outline: 3px solid var(--red-primary);
+    outline-offset: -2px;
+    border-radius: 15px !important;
+    font-family: Vazirmatn;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+.card-body ul .main-button:hover{
+    transform: scale(0.95);
+    box-shadow: 0 0 12px var(--red-secondary);
+}

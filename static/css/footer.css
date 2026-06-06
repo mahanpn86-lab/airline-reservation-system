@@ -1,0 +1,178 @@
+@import url(all.min.css);
+
+@font-face {
+    font-family: Vazirmatn; /*persian texts*/
+    src: url(../fonts/Vazirmatn-FD-Medium.ttf);
+}
+@font-face {
+    font-family: Estedad; /*persian titles*/
+    src: url(../fonts/Estedad-Medium.ttf);
+}
+@font-face {
+    font-family: Inter; /*English texts*/
+    src: url(../fonts/Inter_18pt-Medium.ttf);
+}
+@font-face {
+    font-family: Poppins; /*English titles*/
+    src: url(../fonts/PoppinsLatin-Medium.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background) !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+ul{
+    list-style: none;
+}
+
+:root{
+    --background: #0B1021;
+    --surface: #121833;
+    --primary: #1E3A8A;
+    --red-primary: #7F1D1D;
+    --red-secondary: #F87171;
+    --secondary: #7C3ACD;
+    --thirdly: #38BDF8;
+    --text: #FFFFFF;
+    --text-muted: #e7e7e8;
+    --success: #22C55E;
+    --warning: #F59E0B;
+}
+
+
+/* -----FOOTER----- */
+.row-1, .row-2{
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    justify-content: space-between;
+}
+footer{
+    border-top: 1px solid #a1a8bc;
+    background-image: linear-gradient(to bottom right, var(--surface), var(--primary));
+    margin: 0 !important;
+    margin-top: 30px !important;
+}
+footer section.site-info{
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    margin: 30px;
+}
+footer .site-info div{
+    margin: 30px;
+    text-align: right;
+}
+footer .site-info h4{
+    color: var(--text);
+    position: relative;
+    font-family: Estedad;
+    margin-bottom: 32px;
+}
+footer .site-info h4::after{
+    position: absolute;
+    left: 25%;
+    bottom: -12px;
+    content: "";
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(to left, var(--secondary), var(--thirdly));
+    border-radius: 25px;
+}
+footer .site-info p{
+    color: var(--text-muted);
+    opacity: 0.9;
+    font-family: Vazirmatn;
+    font-size: 13px;
+}
+footer .site-info p i{
+    margin-left: 10px;
+    color: var(--thirdly);
+}
+footer .site-title{
+    color: var(--text);
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 75px 0 75px 75px;
+}
+footer .site-logo{
+    width: 55px;
+    position: relative;
+}
+footer .site-title{
+    font-family: Vazirmatn;
+    font-size: 13px;
+}
+footer .site-title .phone-number{
+    font-family: Vazirmatn;
+    font-size: 14px;
+    background-image: linear-gradient(135deg, var(--red-primary), var(--red-secondary));
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+footer .column{
+    margin: 45px 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 2px 15px var(--surface);
+    padding: 10px 25px;
+    border-radius: 25px;
+}
+footer .column .icon{
+    margin-left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface);
+}
+footer .column:first-child .icon i{
+    color: var(--text);
+}
+footer .column:nth-child(2) .icon i{
+    color: var(--success);
+}
+footer .column:last-child .icon i{
+    color: var(--secondary);
+}
+footer .column div.content h5{
+    color: var(--text);
+    font-family: Estedad;
+}
+footer .column div.content p{
+    color: var(--text-muted);
+    opacity: 0.85;
+    font-size: 12px;
+    font-family: Vazirmatn;
+}
+.AUSMT-logo{
+    width: 35px;
+}
+
+footer section.row-3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(135deg, var(--red-primary), var(--red-secondary));
+    direction: rtl;
+    font-family: Vazirmatn;
+    font-size: 15px;
+    padding: 10px 0;
+    color: var(--text-muted);
+}

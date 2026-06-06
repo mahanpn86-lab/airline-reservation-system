@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/seat_map.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>انتخاب صندلی برای رزرو | پروژه دانشجویی ماهان پناهی</title>
+</head>
+<body>
+
+    {% include "././navbar.html" %}
+    <div class="container w-50 mt-5 text-center">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+        <p class="text-center free help">قابل رزرو (خالی است)</p>
+        <p class="text-center booked help">غیرقابل رزرو (پر است)</p>
+        <a href="{{ url_for('make_ticket', flight_id=flight.id) }}" class="button">مشاهده بلیط</a>
+    </div>
+    <div class="airplane-top">
+        <div class="airplane-top-bg"><img src="{{ url_for('static', filename='img/airplane-top-4.png') }}" alt=""></div>
+        <div class="seats">
+            {% if seat_class == "economy" %}
+                    {% set capacity = flight.airplane.capacity_economy  %}
+            {% elif seat_class == "business" %}
+                {% set capacity = flight.airplane.capacity_business  %}
+            {% elif seat_class == "vip" %}
+                {% set capacity = flight.airplane.capacity_vip  %}
+            {% endif %}
+            {% for i in range(capacity) %}
+                {% set current_seat_num = i + 1 %}
+                {% if current_seat_num in booked_seat_numbers %}
+                    <div class="seat booked"></div>
+                {% else %}
+                    <form action="{{ url_for('make_reservation') }}" method="POST" style="display: inline;">
+                        <input type="hidden" name="seat_id" value="{{ current_seat_num }}">
+                        <input type="hidden" name="seat_class" value="{{ seat_class }}">
+                        <input type="hidden" name="flight_id" value="{{ flight.id }}">
+                        <button type="submit" class="seat free"></button>
+                    </form>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+
+</body>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</html>

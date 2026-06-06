@@ -1,0 +1,24 @@
+<nav>
+        <a href="{{ url_for('main') }}"><img src="{{ url_for('static', filename='img/airplane-icon.svg') }}" alt="Logo" class="airplane-icon"></a>
+        <ul>
+            <a href="{{ url_for('main') }}"><li class="active">صفحه اصلی</li></a>
+            <a href="{{ url_for('main') }}#flights-search"><li>جستجوی پرواز</li></a>
+            <a href="{{ url_for('account') }}"><li>پنل کاربری</li></a>
+            <a href="#contant-us"><li>تماس با ما</li></a>
+            <a href="#about-site"><li>درباره سایت</li></a>
+        </ul>
+
+        {% if current_user.admin and current_user.is_authenticated %}
+            <div class="btn-group" role="group">
+                <a href="{{ url_for('admin_home')}}" class="button">پنل ادمین</a>
+                <a href="{{ url_for('signout') }}" class="exit-button">خروج</a>
+            </div> 
+        {% elif current_user.is_authenticated %}
+            <div class="btn-group" role="group">
+                <a href="{{ url_for('account') }}" class="button">اطلاعات من</a>
+                <a href="{{ url_for('signout') }}" class="exit-button">خروج</a>
+            </div>
+        {% else %}
+            <a href="/auth/register" class="button">ورود / ثبت نام</a>
+        {% endif %}
+    </nav>

@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>پنل ادمین | لیست هواپیما ها</title>
+</head>
+<body>
+
+    {% include "././navbar.html" %}
+
+    <div class="container">
+        <div class="row mt-4">
+            {% include "./admin/menu.html" %}
+            <div class="col-12 justify-content-center mt-4 table-scroll table-responsive">
+                <table class="table">
+                    <thead class="table-light text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>نام و نام خانوادگی کاربر</th>
+                            <th>آیدی کاربر</th>
+                            <th>کد ملی</th>
+                            <th>شماره تلفن کاربر</th>
+                            <th>موجودی حساب کاربر</th>
+                            <th>ادمین</th>
+                            <th>تاریخ ثبت نام</th>
+                            <th>سایر</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-light">
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ user.full_name }}</td>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.national_code }}</td>
+                                <td>{{ user.phone }}</td>
+                                <td>{{ user.wallet }}</td>
+                                {% if user.admin %}
+                                    <td class="text-danger">
+                                        بله
+                                    </td>
+                                {% else %}
+                                    <td class="text-success">
+                                        خیر
+                                    </td>
+                                {% endif %}
+                                <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <form action="{{ url_for('edit_user', id=user.id) }}" method="get">
+                                            <button type="button" class="btn btn-info btn-sm"><a href="{{ url_for('edit_user', id=user.id) }}" class="text-light">Edit</a></button>
+                                        </form>
+                                        <form action="{{ url_for('get_all_users', id=user.id) }}" method="post">
+                                            <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
+</body>
+<script src="../../../static/js/bootstrap.bundle.min.js"></script>
+</html>

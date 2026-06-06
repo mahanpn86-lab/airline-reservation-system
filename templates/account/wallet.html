@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/account.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>افزایش موجودی | پروژه دانشجویی ماهان پناهی</title>
+</head>
+<body>
+    {% include "./navbar.html" %}
+
+    <div class="container mt-5 w-25">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show text-center" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+    <div class="row g-3 align-items-center justify-content-center m-5">
+        <div class="col-auto">
+            <label for="wallet" class="col-form-label text-info">مقدار افزایش موجودی را به تومان وارد کنید</label>
+        </div>
+    </div>
+    <div class="row g-3 align-items-center justify-content-center">
+        <div class="col-auto">
+            <form action="{{ url_for('wallet_increase') }}" method="post">
+                <input type="text" name="amount" id="wallet" class="form-control col-auto" aria-describedby="wallet-help" placeholder="مثال: 9000000" required>
+                <button type="submit" class="form-control btn btn-sm btn-primary mt-4">افزایش موجودی</button>
+            </form>
+        </div>
+    </div>
+
+        {% include "./footer.html" %}
+</body>
+</html>

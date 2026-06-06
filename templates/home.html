@@ -1,0 +1,127 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <title>ماهان پناهی | رزرو بلیط هواپیمایی</title>
+</head>
+<body>
+
+    {% include "navbar.html" %}
+
+    <header>
+        <div class="image"></div>
+        <section class="content">
+            <h1>سفر به آینده <span>با هواپیما</span></h1>
+            <p>رزرو آنلاین بلیط هواپیما در بهترین پرواز ها با مناسب ترین قیمت و بهترین خدمات</p>
+        </section>
+        <section class="flights-info">
+            <div class="flights-info-item">
+                <div class="icon"><i class="fal fa-plane-departure"></i></div>
+                <div class="desc">
+                    <p>مبدا</p>
+                    <p>تهران</p>
+                </div>
+            </div>
+            <div class="flights-info-item">
+                <div class="icon"><i class="fal fa-plane-arrival"></i></div>
+                <div class="desc">
+                    <p>مقصد</p>
+                    <p>مسکو</p>
+                </div>
+            </div>
+            <div class="flights-info-item">
+                <div class="icon"><i class="fal fa-calendar-alt"></i></div>
+                <div class="desc">
+                    <p>تاریخ رفت</p>
+                    <p>1405/03/10</p>
+                </div>
+            </div>
+            <div class="flights-info-item">
+                <div class="icon"><i class="fal fa-users"></i></div>
+                <div class="desc">
+                    <p>تعداد مسافران</p>
+                    <p>1 مسافر</p>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <div class="options container" id="about-us">
+        <div class="option">
+            <div class="icon"><i class="fal fa-badge-dollar"></i></div>
+            <div class="content">
+                <h3>قیمت های شفاف</h3>
+                <p>بهترین قیمت ها بدون هزینه پنهان</p>
+            </div>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fal fa-headset"></i></div>
+            <div class="content">
+                <h3>پشتیبانی 24/7</h3>
+                <p>پشتیبانی کامل 24 ساعته در هر روز هفته</p>
+            </div>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fal fa-bolt"></i></div>
+            <div class="content">
+                <h3>رزرو آسان و سریع</h3>
+                <p>چند کلیک تا سفر شما</p>
+            </div>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fal fa-check-square"></i></div>
+            <div class="content">
+                <h3>انتخاب صندلی دلخواه</h3>
+                <p>انتخاب بهتریین صندلی در هر سالن</p>
+            </div>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fal fa-shield-check"></i></div>
+            <div class="content">
+                <h3>بیمه سفر رایگان</h3>
+                <p>سفر ایمن با بیمه رایگان</p>
+            </div>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fal fa-check"></i></div>
+            <div class="content">
+                <h3>20 سال سابقه</h3>
+                <p>همراه با بیش از 20 سال سابقه درخشان</p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h2 id="flights-search">سالن های پروازی</h2>
+        <div class="seats-type container">
+            <div class="seat-type vip">
+                <div class="content">
+                    <h4>سالن خاص</h4>
+                    <p>Vip</p>
+                </div>
+                <a href="{{ url_for('reserve_main', seat_class='vip') }}" class="button">مشاهده</a>
+            </div>
+            <div class="seat-type business">
+                <div class="content">
+                    <h4>سالن ویژه</h4>
+                    <p>Business</p>
+                </div>
+                <a href="{{ url_for('reserve_main', seat_class='business') }}" class="button">مشاهده</a>
+            </div>
+            <div class="seat-type economy">
+                <div class="content">
+                    <h4>سالن عمومی</h4>
+                    <p>Economy</p>
+                </div>
+                <a href="{{ url_for('reserve_main', seat_class='economy') }}" class="button">مشاهده</a>
+            </div>
+        </div>
+    </main>
+
+    {% include "footer.html" %}
+
+</body>
+</html>
