@@ -70,12 +70,6 @@ class Admin:
             if form.validate_on_submit():
                 airplane_id = request.form.get("airplane_id")
 
-                last_flight = flight.Flights.query.filter_by(airplane_id=airplane_id).order_by(flight.Flights.arrival_date.desc(), flight.Flights.arrival_time.desc()).first()
-                if last_flight:
-                    last_arrival = datetime.combine(last_flight.arrival_date,last_flight.arrival_time)
-                    if datetime.now() < last_arrival + timedelta(hours=1):
-                        flash("این هواپیما هنوز در بازه‌ی استراحت (کمتر از ۱ ساعت از آخرین پرواز) است", "danger")
-                        return redirect(url_for("add_flight"))
                 selected_airplane = airplane.Airplanes.query.filter_by(id=airplane_id).first()
                 airplane_name = selected_airplane.name
                 origin = request.form.get("origin")
@@ -88,6 +82,15 @@ class Admin:
                 departure_date = request.form.get("departure_date")
                 arrival_date_obj = datetime.strptime(arrival_date, "%Y-%m-%d").date()
                 departure_date_obj = datetime.strptime(departure_date, "%Y-%m-%d").date()
+
+                last_flight = flight.Flights.query.filter_by(airplane_id=airplane_id).order_by(flight.Flights.arrival_date.desc(), flight.Flights.arrival_time.desc()).first()
+                if last_flight:
+                    last_arrival = datetime.combine(last_flight.arrival_date, last_flight.arrival_time)
+                    new_departure = datetime.combine(departure_date_obj, departure_time_obj)
+                    if new_departure < last_arrival + timedelta(hours=1):
+                        flash("این هواپیما هنوز در بازه‌ی استراحت (کمتر از ۱ ساعت از آخرین پرواز) است", "danger")
+                        return redirect(url_for("add_flight"))
+
                 economy_price = request.form.get("economy_price")
                 business_price = request.form.get("business_price")
                 vip_price = request.form.get("vip_price")
